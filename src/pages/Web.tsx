@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PageShell from "@/components/PageShell";
 import Reveal from "@/components/Reveal";
+import CaseStudies from "@/components/CaseStudies";
 import { Globe, MousePointerClick, GitBranch, AppWindow, Database, ShoppingBag, X, ArrowRight, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -22,12 +23,6 @@ const process = [
 ];
 
 const tech = ["React", "Next.js", "Tailwind", "Firebase", "Webflow", "Framer", "Shopify"];
-
-const projects = [
-  { name: "Northwind Studio", category: "Brand site", desc: "Editorial portfolio for a creative studio.", grad: "from-teal-500/30 to-cyan-700/20" },
-  { name: "Pulse Analytics", category: "SaaS platform", desc: "Multi-tenant dashboard for marketing teams.", grad: "from-emerald-500/30 to-teal-700/20" },
-  { name: "Hearth & Co", category: "E-commerce", desc: "Headless Shopify storefront, 2.4s LCP.", grad: "from-amber-500/20 to-rose-600/20" },
-];
 
 // Modal
 const ProjectModal = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
@@ -221,26 +216,13 @@ const Web = () => {
         </div>
       </section>
 
-      <section id="portfolio" className="container-tight py-20">
-        <Reveal><h2 className="display text-3xl md:text-4xl mb-12">Recent work.</h2></Reveal>
-        <div className="grid md:grid-cols-3 gap-5">
-          {projects.map((p, i) => (
-            <Reveal key={p.name} delay={i * 0.1}>
-              <a href="#" className="group block rounded-2xl overflow-hidden border border-border bg-card hover:border-primary/40 transition-colors">
-                <div className={`aspect-[4/3] bg-gradient-to-br ${p.grad} relative`}>
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,hsl(var(--background))_100%)]" />
-                </div>
-                <div className="p-6">
-                  <div className="text-xs uppercase tracking-wider text-primary mb-2">{p.category}</div>
-                  <h3 className="display text-xl mb-2">{p.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{p.desc}</p>
-                  <span className="text-sm text-primary inline-flex items-center gap-1 group-hover:gap-2 transition-all">View Project <ArrowRight size={14} /></span>
-                </div>
-              </a>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      <div id="portfolio">
+        <CaseStudies
+          service="web"
+          heading="Recent work."
+          subhead="Sites and platforms we have shipped recently. Tap any card to dig into the build."
+        />
+      </div>
 
       {/* CTA with modal trigger */}
       <section className="container-tight py-24 md:py-32">
