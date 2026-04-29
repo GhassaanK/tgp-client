@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import PageShell from "@/components/PageShell";
 import Reveal from "@/components/Reveal";
 import CTABlock from "@/components/CTABlock";
+import CaseStudies from "@/components/CaseStudies";
 import { TrendingDown, Target, BarChart3, ClipboardCheck, Lightbulb, Rocket, TrendingUp, FileSearch, LineChart, Users, Layers, RefreshCw } from "lucide-react";
 
 const problems = [
@@ -126,6 +127,12 @@ const Leads = () => (
         ))}
       </div>
     </section>
+
+    <CaseStudies
+      service="leads"
+      heading="Work that paid for itself."
+      subhead="A few recent paid social engagements. Tap any card for the full breakdown."
+    />
 
     <CTABlock headline="Want us to look at your account?" buttonLabel="Book a free audit" to="/contact" />
   </PageShell>

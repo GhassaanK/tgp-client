@@ -1,6 +1,7 @@
 import PageShell from "@/components/PageShell";
 import Reveal from "@/components/Reveal";
 import CTABlock from "@/components/CTABlock";
+import CaseStudies from "@/components/CaseStudies";
 import { CalendarDays, PenLine, Camera, Send, MessageSquare, BarChart3, Check } from "lucide-react";
 
 const problems = [
@@ -150,6 +151,12 @@ const Social = () => (
         ))}
       </div>
     </section>
+
+    <CaseStudies
+      service="social"
+      heading="Organic, when it actually works."
+      subhead="Recent social engagements where consistent content moved real numbers."
+    />
 
     <CTABlock headline="Let us figure out what you actually need." buttonLabel="Book a free strategy call" to="/contact" />
   </PageShell>
