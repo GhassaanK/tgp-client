@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import PageShell from "@/components/PageShell";
 import Reveal from "@/components/Reveal";
 import CTABlock from "@/components/CTABlock";
+import CaseStudies from "@/components/CaseStudies";
 import { ArrowRight, Target, Sparkles, Code2 } from "lucide-react";
 
 const services = [
@@ -107,23 +108,12 @@ const Explore = () => (
           </Reveal>
         ))}
       </div>
-      <div className="grid md:grid-cols-3 gap-5">
-        {projects.map((p, i) => (
-          <Reveal key={p.name} delay={i * 0.08}>
-            <a href="#" className="group block rounded-2xl overflow-hidden border border-border bg-card hover:border-primary/40 transition-colors">
-              <div className={`aspect-[4/3] bg-gradient-to-br ${p.grad} relative`}>
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,hsl(var(--background))_100%)]" />
-              </div>
-              <div className="p-6">
-                <div className="text-xs uppercase tracking-wider text-primary mb-2">{p.category}</div>
-                <h3 className="display text-xl mb-3">{p.name}</h3>
-                <span className="text-sm text-primary inline-flex items-center gap-1 group-hover:gap-2 transition-all">View Project <ArrowRight size={14} /></span>
-              </div>
-            </a>
-          </Reveal>
-        ))}
-      </div>
     </section>
+
+    <CaseStudies
+      heading="Selected work."
+      subhead="A small slice of recent projects across paid, organic, and product. Tap any card for the full story."
+    />
 
     {/* About snippet */}
     <section className="container-tight py-20">
