@@ -1,6 +1,7 @@
 import PageShell from "@/components/PageShell";
 import Reveal from "@/components/Reveal";
 import CTABlock from "@/components/CTABlock";
+import CaseStudies from "@/components/CaseStudies";
 import { CalendarDays, PenLine, Camera, Send, MessageSquare, BarChart3, Check } from "lucide-react";
 
 const problems = [

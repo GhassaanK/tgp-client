@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import PageShell from "@/components/PageShell";
 import Reveal from "@/components/Reveal";
 import CTABlock from "@/components/CTABlock";
+import CaseStudies from "@/components/CaseStudies";
 import { TrendingDown, Target, BarChart3, ClipboardCheck, Lightbulb, Rocket, TrendingUp, FileSearch, LineChart, Users, Layers, RefreshCw } from "lucide-react";
 
 const problems = [
