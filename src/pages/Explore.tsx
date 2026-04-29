@@ -35,12 +35,6 @@ const stats = [
   { stat: "3x", label: "follower growth", sub: "Service business, 90 days organic" },
 ];
 
-const projects = [
-  { name: "Northwind Studio", category: "Brand site", grad: "from-teal-500/30 to-cyan-700/20" },
-  { name: "Pulse Analytics", category: "SaaS platform", grad: "from-emerald-500/30 to-teal-700/20" },
-  { name: "Hearth & Co", category: "E-commerce", grad: "from-amber-500/20 to-rose-600/20" },
-];
-
 const testimonials = [
   { name: "Maya Okafor", role: "Founder, Loomstead", quote: "They asked sharper questions in week one than our last agency asked all year. The work shows it." },
   { name: "Daniel Ross", role: "Head of Growth, Pulse Analytics", quote: "Direct, honest, fast. We hit 4x ROAS inside two months and they kept pushing." },
