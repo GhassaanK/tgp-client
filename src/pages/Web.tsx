@@ -4,6 +4,8 @@ import Reveal from "@/components/Reveal";
 import CaseStudies from "@/components/CaseStudies";
 import { Globe, MousePointerClick, GitBranch, AppWindow, Database, ShoppingBag, X, ArrowRight, Check } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "@/services/firebase";
 
 const builds = [
   { icon: Globe, title: "Business Websites", body: "Your digital storefront. Built to convert visitors into inquiries." },
@@ -36,9 +38,27 @@ const ProjectModal = ({ open, onClose }: { open: boolean; onClose: () => void })
   const timelines = ["ASAP", "1 to 3 months", "3 to 6 months", "Flexible"];
   const budgets = ["Under $2k", "$2k to $5k", "$5k to $15k", "Let us talk"];
 
-  const submit = () => {
+  const submit = async () => {
     if (!data.name.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return;
-    setDone(true);
+
+    try {
+      await addDoc(collection(db, "leads"), {
+        type: "project_inquiry",
+        name: data.name,
+        email: data.email,
+        message: data.message || "",
+        what: data.what || "",
+        timeline: data.timeline || "",
+        budget: data.budget || "",
+        source: "web_modal",
+        status: "new",
+        createdAt: serverTimestamp(),
+      });
+
+      setDone(true);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -64,7 +84,7 @@ const ProjectModal = ({ open, onClose }: { open: boolean; onClose: () => void })
             {!done && (
               <>
                 <div className="flex gap-1.5 mb-8">
-                  {[0,1,2,3].map((i) => (
+                  {[0, 1, 2, 3].map((i) => (
                     <div key={i} className={`h-1 flex-1 rounded-full transition-colors ${i <= step ? "bg-primary" : "bg-border"}`} />
                   ))}
                 </div>

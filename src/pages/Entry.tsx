@@ -2,6 +2,8 @@ import { useEffect, useState, FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Target, Sparkles, Code2, Compass } from "lucide-react";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "../services/firebase";
 
 const cards = [
   {
@@ -48,12 +50,26 @@ const Entry = () => {
     setTimeout(() => navigate(to), 480);
   };
 
-  const handleEmail = (e: FormEvent) => {
+  const handleEmail = async (e: FormEvent) => {
     e.preventDefault();
-    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
-    setSubmitted(true);
-  };
 
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+
+    try {
+      await addDoc(collection(db, "leads"), {
+        type: "email_only",
+        email: email.trim(),
+        source: "homepage",
+        status: "new",
+        createdAt: serverTimestamp(),
+      });
+
+      setSubmitted(true);
+      setEmail("");
+    } catch (err) {
+      console.error("Error saving lead:", err);
+    }
+  };
   return (
     <AnimatePresence>
       {!exiting && (
